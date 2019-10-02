@@ -4,17 +4,17 @@ import java.util.Objects;
 
 public class Product {
 
-	private int id;
+	private int productId;
 	
-	private String name;
+	private String productName;
 	
 	private double price;
 
 	
 	
 	public Product(int id, String name, double price) {
-		this.id = id;
-		this.name = name;
+		this.productId = id;
+		this.productName = name;
 		this.price = price;
 	}
 	
@@ -25,11 +25,11 @@ public class Product {
 	
 
 	public String getName() {
-		return name;
+		return productName;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.productName = name;
 	}
 
 	public double getPrice() {
@@ -41,13 +41,13 @@ public class Product {
 	}
 
 	public int getId() {
-		return id;
+		return productId;
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name);
+		return Objects.hash(productId, productName);
 	}
 
 
@@ -60,7 +60,7 @@ public class Product {
 		if (getClass() != obj.getClass())
 			return false;
 		Product other = (Product) obj;
-		return id == other.id && Objects.equals(name, other.name);
+		return productId == other.productId && Objects.equals(productName, other.productName);
 	}
 
 
@@ -68,9 +68,9 @@ public class Product {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Product [id=");
-		builder.append(id);
+		builder.append(productId);
 		builder.append(", name=");
-		builder.append(name);
+		builder.append(productName);
 		builder.append(", price=");
 		builder.append(price);
 		builder.append("]");

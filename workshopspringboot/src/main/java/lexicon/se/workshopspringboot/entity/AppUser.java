@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class AppUser {
 	
-	private int id;
+	private int userId;
 	
 	private String firstName;
 	
@@ -19,7 +19,7 @@ public class AppUser {
 	
 
 	public AppUser(int id, String firstName, String lastName, String email) {
-		this.id = id;
+		this.userId = id;
 		setFirstName(firstName);
 		setLastName(lastName);
 		setEmail(email);
@@ -54,14 +54,14 @@ public class AppUser {
 	}
 
 	public int getId() {
-		return id;
+		return userId;
 	}
 	
 	
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, id);
+		return Objects.hash(email, userId);
 	}
 
 
@@ -75,7 +75,7 @@ public class AppUser {
 		if (getClass() != obj.getClass())
 			return false;
 		AppUser other = (AppUser) obj;
-		return Objects.equals(email, other.email) && id == other.id;
+		return Objects.equals(email, other.email) && userId == other.userId;
 	}
 
 
@@ -84,7 +84,7 @@ public class AppUser {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("AppUser [id=");
-		builder.append(id);
+		builder.append(userId);
 		builder.append(", firstName=");
 		builder.append(firstName);
 		builder.append(", lastName=");
