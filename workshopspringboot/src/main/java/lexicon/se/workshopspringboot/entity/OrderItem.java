@@ -24,6 +24,10 @@ public class OrderItem {
 	this(0, quantity, product, null);
 	}
 
+	public OrderItem() {
+		
+	}
+	
 	
 	public double calculatePrice() {
 		

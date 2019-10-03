@@ -23,6 +23,10 @@ public class Product {
 		this(0, name, price);
 	}
 	
+	public Product() {
+		
+	}
+	
 
 	public String getName() {
 		return productName;

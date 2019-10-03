@@ -32,6 +32,11 @@ public class ProductOrder {
 		this.user = user;
 	}
 
+	
+	public ProductOrder() {
+		
+	}
+	
 
 	public int getProductOrderId() {
 		return productOrderId;

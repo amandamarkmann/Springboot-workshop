@@ -31,6 +31,9 @@ public class AppUser {
 		this(0, firstName, lastName, email);
 	}
 
+	public AppUser() {
+		
+	}
 
 
 	public void setFirstName(String firstName) {
