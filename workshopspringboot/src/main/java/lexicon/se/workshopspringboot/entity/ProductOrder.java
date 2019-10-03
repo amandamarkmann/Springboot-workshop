@@ -6,13 +6,30 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
 public class ProductOrder {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int productOrderId;
+	
 	private LocalDate orderDate;
 	private LocalTime orderHour;
+	
+	@OneToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+			orphanRemoval = true)
 	private List <OrderItem> orderContent;
+	
+	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	private AppUser user;
 	
 	

@@ -2,13 +2,30 @@ package lexicon.se.workshopspringboot.entity;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class OrderItem {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int orderItemId;
 	
 	private int quantity;
 	
+	@ManyToOne(fetch = FetchType.EAGER, 
+			cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	
 	private Product product;
+	
+	@ManyToOne(fetch = FetchType.LAZY,
+			cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	
 	private ProductOrder productOrder;
 
