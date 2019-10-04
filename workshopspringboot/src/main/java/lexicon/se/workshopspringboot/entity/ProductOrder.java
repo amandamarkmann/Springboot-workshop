@@ -8,10 +8,11 @@ import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -25,11 +26,16 @@ public class ProductOrder {
 	private LocalDate orderDate;
 	private LocalTime orderHour;
 	
-	@OneToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+	@OneToMany(fetch = FetchType.EAGER,
+			cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+			mappedBy = "productOrder",
 			orphanRemoval = true)
+	
 	private List <OrderItem> orderContent;
 	
-	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	@ManyToOne(fetch = FetchType.LAZY,
+			cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	@JoinColumn(name = "user_id")
 	private AppUser user;
 	
 	
@@ -71,6 +77,7 @@ public class ProductOrder {
 
 
 	public void setOrderContent(List<OrderItem> orderContent) {
+		
 		this.orderContent = orderContent;
 	}
 
@@ -153,8 +160,6 @@ public class ProductOrder {
 		builder.append(orderDate);
 		builder.append(", orderHour=");
 		builder.append(orderHour);
-		builder.append(", orderContent=");
-		builder.append(orderContent);
 		builder.append(", user=");
 		builder.append(user);
 		builder.append("]");

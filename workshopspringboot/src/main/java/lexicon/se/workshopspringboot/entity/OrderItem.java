@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -21,12 +22,12 @@ public class OrderItem {
 	
 	@ManyToOne(fetch = FetchType.EAGER, 
 			cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-	
+	@JoinColumn(name = "product_id")
 	private Product product;
 	
 	@ManyToOne(fetch = FetchType.LAZY,
 			cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-	
+	@JoinColumn(name = "order_id")
 	private ProductOrder productOrder;
 
 	public OrderItem(int id, int quantity, Product product, ProductOrder productOrder) {

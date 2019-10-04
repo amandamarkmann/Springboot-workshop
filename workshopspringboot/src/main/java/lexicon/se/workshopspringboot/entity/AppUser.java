@@ -20,12 +20,7 @@ public class AppUser {
 	
 	private String email;
 
-	public String getFirstName() {
-		return firstName;
-	}
 	
-	
-
 	public AppUser(int id, String firstName, String lastName, String email) {
 		this.userId = id;
 		setFirstName(firstName);
@@ -33,7 +28,6 @@ public class AppUser {
 		setEmail(email);
 	}
 
-	
 	
 	public AppUser(String firstName, String lastName, String email) {
 		this(0, firstName, lastName, email);
@@ -43,7 +37,10 @@ public class AppUser {
 		
 	}
 
-
+	public String getFirstName() {
+		return firstName;
+	}
+	
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}

@@ -27,7 +27,7 @@ public class Product {
 	}
 	
 	
-	public Product(String name, int price) {
+	public Product(String name, double price) {
 		this(0, name, price);
 	}
 	
